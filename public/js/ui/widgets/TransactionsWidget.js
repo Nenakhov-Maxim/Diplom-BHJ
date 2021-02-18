@@ -31,7 +31,11 @@ class TransactionsWidget {
         incomeModal = App.getModal('newIncome'),
         expenseModal = App.getModal('newExpense');
 
-    createIncomeButton.addEventListener( 'click', () => incomeModal.open());
-    createExpenseButton.addEventListener( 'click', () => expenseModal.open());
+    createIncomeButton.addEventListener( 'click', () => { 
+      incomeModal.open()
+    });
+    createExpenseButton.addEventListener( 'click', () => {
+      expenseModal.open()
+    });
   }
 }

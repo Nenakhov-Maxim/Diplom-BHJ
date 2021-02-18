@@ -13,6 +13,7 @@ class AccountsWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor( element ) {
+    
     if ( !element ) {
       throw new Error( 'Элемент не существует' );
     }
@@ -30,8 +31,8 @@ class AccountsWidget {
    * (которые отображены в боковой колонке),
    * вызывает AccountsWidget.onSelectAccount()
    * */
-  registerEvents() {
-    this.element.addEventListener('click', e => {
+  registerEvents() {    
+    this.element.addEventListener('click', e => {      
       e.preventDefault();
       const createAccount = e.target.closest('.create-account');
 
@@ -58,11 +59,12 @@ class AccountsWidget {
    * Отображает список полученных счетов с помощью
    * метода renderItem()
    * */
-  update() {
+  update() {      
     if (!User.current()) {
       return;
     }
-    Account.list(User.current(), (err, response) => {
+    Account.list(User.current(), (err, response) => { 
+           
       if (err){
         return;
       }

@@ -1,0 +1,220 @@
+{
+  "users": [
+    {
+      "name": "demo",
+      "email": "demo@demo",
+      "password": "demo",
+      "id": "1"
+    },
+    {
+      "name": "MAKSIM NENAKHOV",
+      "email": "Nenakhov.Max@yandex.ru",
+      "password": "111",
+      "id": "1e4f6g42wkl6nipok"
+    },
+    {
+      "name": "Вася Пупкин",
+      "email": "vasya@gmail.com",
+      "password": "12345",
+      "id": "1e4f6g9y8klb4z35f"
+    },
+    {
+      "name": "Ruby",
+      "email": "ruby@dude.com",
+      "password": "000",
+      "id": "1e4f6gay4klb76q51"
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Банк",
+      "user_id": "1",
+      "id": "1"
+    },
+    {
+      "name": "Магазин",
+      "user_id": "1",
+      "id": "2"
+    },
+    {
+      "name": "Бизнес",
+      "user_id": "1",
+      "id": "3"
+    },
+    {
+      "name": "Кредит",
+      "user_id": "1",
+      "id": "1e4f6g3hwkl6o2dco"
+    },
+    {
+      "name": "Карта ВТБ",
+      "user_id": "1e4f6g42wkl6nipok",
+      "id": "1e4f6g6g8kl6ocx7p"
+    },
+    {
+      "name": "Наличные",
+      "user_id": "1e4f6g42wkl6nipok",
+      "id": "1e4f6gagkkl8c6y1q"
+    },
+    {
+      "name": "На поисковик",
+      "user_id": "1e4f6gay4klb76q51",
+      "id": "1e4f6g8joklb76y5s"
+    }
+  ],
+  "transactions": [
+    {
+      "account_id": "1",
+      "created_at": "2019-09-17 15:53:02",
+      "id": "2",
+      "name": "Баланс на дебетовке",
+      "sum": 3200,
+      "type": "income",
+      "user_id": "1"
+    },
+    {
+      "account_id": "1",
+      "created_at": "2019-09-19 20:12:02",
+      "id": "3",
+      "name": "Копилка",
+      "sum": 1500,
+      "type": "income",
+      "user_id": "1"
+    },
+    {
+      "account_id": "2",
+      "created_at": "2019-09-26 16:23:02",
+      "id": "4",
+      "name": "Молочные продукты",
+      "sum": 100,
+      "type": "income",
+      "user_id": "1"
+    },
+    {
+      "account_id": "2",
+      "created_at": "2019-09-26 14:47:02",
+      "id": "6",
+      "name": "Мясо",
+      "sum": 600,
+      "type": "income",
+      "user_id": "1"
+    },
+    {
+      "account_id": "2",
+      "created_at": "2019-09-27 13:27:02",
+      "id": "7",
+      "name": "Долг в банк",
+      "sum": 5000,
+      "type": "expense",
+      "user_id": "1"
+    },
+    {
+      "account_id": "3",
+      "created_at": "2017-12-27 13:27:02",
+      "id": "11",
+      "name": "Прибыль с банка",
+      "sum": 1500000,
+      "type": "income",
+      "user_id": "1"
+    },
+    {
+      "account_id": "3",
+      "created_at": "2018-01-15 13:27:02",
+      "id": "12",
+      "name": "Прибыль с магазина",
+      "sum": 300000,
+      "type": "income",
+      "user_id": "1"
+    },
+    {
+      "account_id": "3",
+      "created_at": "2017-09-15 13:27:02",
+      "id": "14",
+      "name": "На охрану",
+      "sum": 60000,
+      "type": "expense",
+      "user_id": "1"
+    },
+    {
+      "account_id": "3",
+      "created_at": "2017-10-15 13:27:02",
+      "id": "15",
+      "name": "На бумер",
+      "sum": 300000,
+      "type": "expense",
+      "user_id": "1"
+    },
+    {
+      "id": "1e4f6gco8klb36txe",
+      "type": "income",
+      "name": " Заработная плата",
+      "sum": 15000,
+      "account_id": "1e4f6g6g8kl6ocx7p",
+      "user_id": "1e4f6g42wkl6nipok",
+      "created_at": "2021-02-18T16:36:36.481Z"
+    },
+    {
+      "id": "1e4f6g6yoklb44z6n",
+      "type": "income",
+      "name": "Снятие с ВТБ",
+      "sum": 500,
+      "account_id": "1e4f6gagkkl8c6y1q",
+      "user_id": "1e4f6g42wkl6nipok",
+      "created_at": "2021-02-18T17:03:09.598Z"
+    },
+    {
+      "id": "1e4f6gax0klb4lwe3",
+      "type": "income",
+      "name": "Долг",
+      "sum": 25000,
+      "account_id": "1e4f6g6g8kl6ocx7p",
+      "user_id": "1e4f6g42wkl6nipok",
+      "created_at": "2021-02-18T17:16:19.130Z"
+    },
+    {
+      "id": "1e4f6gaq8klb4qhm6",
+      "type": "expense",
+      "name": "Снятие наличных",
+      "sum": -500,
+      "account_id": "1e4f6g6g8kl6ocx7p",
+      "user_id": "1e4f6g42wkl6nipok",
+      "created_at": "2021-02-18T17:19:53.261Z"
+    },
+    {
+      "id": "1e4f6g624klb70yan",
+      "type": "income",
+      "name": "Зачисление",
+      "sum": 1000,
+      "account_id": "1",
+      "user_id": "1",
+      "created_at": "2021-02-18T18:24:00.670Z"
+    },
+    {
+      "id": "1e4f6gbb8klb77fv5",
+      "type": "income",
+      "name": "Пожертвования",
+      "sum": 150000,
+      "account_id": "1e4f6g8joklb76y5s",
+      "user_id": "1e4f6gay4klb76q51",
+      "created_at": "2021-02-18T18:29:03.376Z"
+    },
+    {
+      "id": "1e4f6g96wklb78g3y",
+      "type": "income",
+      "name": "Инвестор подарил",
+      "sum": 95000,
+      "account_id": "1e4f6g8joklb76y5s",
+      "user_id": "1e4f6gay4klb76q51",
+      "created_at": "2021-02-18T18:29:50.349Z"
+    },
+    {
+      "id": "1e4f6gap0klb78s3y",
+      "type": "expense",
+      "name": "Купил пирожок",
+      "sum": -150,
+      "account_id": "1e4f6g8joklb76y5s",
+      "user_id": "1e4f6gay4klb76q51",
+      "created_at": "2021-02-18T18:30:05.901Z"
+    }
+  ]
+}

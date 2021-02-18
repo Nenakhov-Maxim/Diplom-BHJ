@@ -4,12 +4,18 @@
  * Имеет свойство URL, равное '/user'.
  * */
 class User {
-  /**
+    /**
    * Устанавливает текущего пользователя в
    * локальном хранилище.
    * */
   static setCurrent(user) {
-
+    let userNow = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      password: user.password
+    }        
+    localStorage.setItem('user', JSON.stringify(userNow));   
   }
 
   /**
@@ -17,7 +23,7 @@ class User {
    * пользователе из локального хранилища.
    * */
   static unsetCurrent() {
-
+    localStorage.clear();
   }
 
   /**
@@ -25,15 +31,15 @@ class User {
    * из локального хранилища
    * */
   static current() {
-
+    return JSON.parse(localStorage.getItem('user'));
   }
 
   /**
    * Получает информацию о текущем
    * авторизованном пользователе.
    * */
-  static fetch(callback) {
-
+  static fetch(callback) {    
+    callback();    
   }
 
   /**
@@ -42,19 +48,21 @@ class User {
    * сохранить пользователя через метод
    * User.setCurrent.
    * */
-  static login( data, callback) {
-    createRequest({
+  static login( data, callback) {     
+    this.URL = '/user'   
+     createRequest({
       url: this.URL + '/login',
       method: 'POST',
       responseType: 'json',
-      data,
-      callback: (err, response) => {
-        if (response && response.user) {
+      data},
+       (err, response) => {        
+        if (response.success && response.user) {         
           this.setCurrent(response.user);
-        }
-        callback(err, response);
-      }
-    });
+          callback();                  
+        } else  {
+          throw new Error(err);                 
+        }                  
+    });        
   }
 
   /**
@@ -63,15 +71,41 @@ class User {
    * сохранить пользователя через метод
    * User.setCurrent.
    * */
-  static register( data, callback) {
-
+  static register( data, callback) {       
+    this.URL = '/user'       
+     createRequest({
+      url: this.URL + '/register',
+      method: 'POST',
+      responseType: 'json',
+      data},
+       (err, response) => {  
+          if (response.success && response.user) {         
+          this.setCurrent(response.user);
+          callback();                  
+        } else  {
+          throw new Error(err);                 
+        }
+    }); 
   }
 
   /**
    * Производит выход из приложения. После успешного
    * выхода необходимо вызвать метод User.unsetCurrent
    * */
-  static logout( data, callback) {
-
+  static logout( data, callback) {     
+    this.URL = "/user";
+    createRequest({
+      url: this.URL + '/logout',
+      method: 'POST',
+      responseType: 'json',
+      data},
+      (err, response) => {
+        if (response && response.success) {          
+          this.unsetCurrent();                  
+          callback();
+        } else {
+          throw new Error(err);
+        }        
+    })
   }
 }

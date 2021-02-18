@@ -1,14 +1,14 @@
 /**
  * Класс App управляет всем приложением
  * */
-class App {
+class App {  
   /**
    * С вызова этого метода начинается работа всего приложения
    * Он производит перваоначальную настройку всех
    * страниц, форм, виджетов, всплывающих окон, а также
    * боковой колонки
    * */
-  static init() {
+  static init() {    
     this.element = document.querySelector(".app");
     this.content = document.querySelector(".content-wrapper");
 
@@ -30,7 +30,7 @@ class App {
    * Если пользователь не авторизован, необходимо установить
    * состояние 'init'
    * */
-  static initUser() {
+  static initUser() {    
     User.fetch(() => this.setState(User.current() ? "user-logged" : "init"));
   }
 
@@ -73,8 +73,8 @@ class App {
   /**
    * Инициализирует формы
    * */
-  static initForms() {
-    this.forms = {
+  static initForms() {     
+    this.forms = {                  
       login: new LoginForm(document.querySelector("#login-form")),
       register: new RegisterForm(document.querySelector("#register-form")),
       createAccount: new CreateAccountForm(
@@ -134,7 +134,7 @@ class App {
    * Вызывает у полученной страницы метод render()
    * и передаёт туда объект options
    * */
-  static showPage(pageName, options) {
+  static showPage(pageName, options) {      
     const page = this.getPage(pageName);
     page.render(options);
   }
