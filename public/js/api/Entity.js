@@ -1,3 +1,7 @@
+
+
+
+
 /**
  * Класс Entity - базовый для взаимодействия с сервером.
  * Имеет свойство URL, равно пустой строке.
@@ -15,14 +19,7 @@ class Entity {
       method: 'GET',
       responseType: 'json',
       data},
-      (response) => { 
-        if(response.success){
-          callback(undefined, response);          
-        } else  {          
-          throw new Error(response.error);
-        }      
-           
-      }); 
+      (response) => {callback(response)});            
   }
 
   /**
@@ -35,14 +32,7 @@ class Entity {
       url: this.URL,
       method: 'PUT',
       responseType: 'json',
-      data},
-      (response) => {
-        if (response.success) {
-          callback(response);
-        } else {
-          throw new Error(response.error);
-        }                 
-      });
+      data}, (response) => {callback(response)});
   }
 
   /**
@@ -54,13 +44,6 @@ class Entity {
     url: this.URL,
     method: 'DELETE',
     responseType: 'json',
-    data},
-    (response) => {
-      if (response.success) {
-        callback();
-      } else {
-        throw new Error(response.error);
-      }                 
-    });
+    data}, (response) => {callback(response)});
   }
 }

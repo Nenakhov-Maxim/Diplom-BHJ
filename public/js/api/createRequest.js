@@ -44,7 +44,7 @@ const createRequest = (options = {}, callback) => {
     xhr.responseType = options.responseType;
     xhr.send(formData);
     xhr.onreadystatechange =  function() {
-      if(xhr.readyState===4){                   
+      if(xhr.readyState===4){                           
         callback(xhr.response);      
       }
     }

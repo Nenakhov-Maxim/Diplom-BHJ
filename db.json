@@ -66,6 +66,11 @@
       "name": "На поисковик",
       "user_id": "1e4f6gay4klb76q51",
       "id": "1e4f6g8joklb76y5s"
+    },
+    {
+      "name": "TestAcount",
+      "user_id": "1",
+      "id": "1e4f6gbcskm944dce"
     }
   ],
   "transactions": [
@@ -230,6 +235,24 @@
       "account_id": "1e4f6g9s4km8ug5p0",
       "user_id": "1",
       "created_at": "2021-03-14T09:46:36.060Z"
+    },
+    {
+      "id": "1e4f6g6jckm93qb3n",
+      "type": "income",
+      "name": "Депозит",
+      "sum": 100000,
+      "account_id": "1",
+      "user_id": "1",
+      "created_at": "2021-03-14T11:55:55.186Z"
+    },
+    {
+      "id": "1e4f6g3p4km941q39",
+      "type": "income",
+      "name": "Поступление денег",
+      "sum": 230000,
+      "account_id": "1e4f6g3hwkl6o2dco",
+      "user_id": "1",
+      "created_at": "2021-03-14T12:04:47.828Z"
     }
   ]
 }

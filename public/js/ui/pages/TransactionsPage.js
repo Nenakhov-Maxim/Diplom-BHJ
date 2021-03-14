@@ -51,9 +51,13 @@ class TransactionsPage {
    * */
   removeAccount() {
     if(confirm('Вы уверены, что хотите удалить счет?')) {      
-      Account.remove(this.lastOptions.account_id,  () => {       
-       this.clear();
-       App.update()
+      Account.remove(this.lastOptions.account_id,  (response) => {
+        if (response.success) {
+          this.clear();
+          App.update();
+        } else {
+          throw new Error(response.error);
+        }             
       });
     } 
   }
@@ -65,13 +69,14 @@ class TransactionsPage {
    * */
   removeTransaction( data) {
     if(confirm('Вы уверены, что хотете удалить транзакцию?')) {      
-      Transaction.deleteTransaction(data, () =>  { 
-      App.update();      
-      //document.querySelector(`[data-id="${id}"]`).closest('div.transaction').remove();
+      Transaction.remove(data, (response) =>  {        
+        if (response.success) {
+          App.update();
+        } else {
+          throw new Error(response.error);
+        }       
       });
     }
-    
-
   }
 
   /**
@@ -87,10 +92,15 @@ class TransactionsPage {
       if  (Object.keys(options).length !== 0) {
         Account.get(options.account_id, (response) =>  {        
           this.renderTitle(response.data.name);               
-          Transaction.list(this.lastOptions, (err, response) => {          
-            this.renderTransactions(response.data);
-        });    
-      });
+          Transaction.list(this.lastOptions, (response) => {
+            if (response.success) {
+               this.renderTransactions(response.data);
+            }
+            else  {          
+              throw new Error(response.error);
+            }         
+          });    
+        });
       }              
     }
   }

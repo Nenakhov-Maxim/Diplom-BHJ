@@ -22,16 +22,20 @@ class CreateTransactionForm extends AsyncForm {
     if (!data) {
       data = User.current();
     }   
-    Account.list(data, (err, response) => {      
-      let input = this.element.querySelector('[name="account_id"]');      
-      input.innerHTML = '';
-      response.data.forEach(element => {
-        input.insertAdjacentHTML('beforeEnd', 
-        `
-        <option value="${element.id}">${element.name}</option>
-        `);
-      });
-      
+    Account.list(data, (response) => {
+      if (response.success) {
+        let input = this.element.querySelector('[name="account_id"]');             
+        input.innerHTML = '';
+        response.data.forEach(element => {
+          input.insertAdjacentHTML('beforeEnd', 
+          `
+          <option value="${element.id}">${element.name}</option>
+          `);
+        });
+      }
+      else {          
+       throw new Error(response.error);
+     }   
     })
   }
 
@@ -42,11 +46,16 @@ class CreateTransactionForm extends AsyncForm {
    * в котором находится форма
    * */
   onSubmit(data) {  
-    Transaction.create(data, () => {
-      App.update();
-      const newTransactionModal = new Modal(this.element.closest('div.modal'));
+    Transaction.create(data, (response) => {
+      if (response.success) {
+        App.update();
+        const newTransactionModal = new Modal(this.element.closest('div.modal'));
         this.element.reset();      
         newTransactionModal.close();
+      } else {
+        throw new Error(response.error);
+      }
+      
     });
   }
 }

@@ -63,9 +63,9 @@ class AccountsWidget {
     if (!User.current()) {
       return;
     }
-    Account.list(User.current(), (err, response) => { 
+    Account.list(User.current(), (response) => { 
            
-      if (err){
+      if (response.error){
         return;
       }
       if (!response.data){
