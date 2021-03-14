@@ -63,9 +63,9 @@ class TransactionsPage {
    * подтверждеия действия (с помощью confirm()).
    * По удалению транзакции вызовите метод App.update()
    * */
-  removeTransaction( id ) {
+  removeTransaction( data) {
     if(confirm('Вы уверены, что хотете удалить транзакцию?')) {      
-      Transaction.deleteTransaction(id, () =>  { 
+      Transaction.deleteTransaction(data, () =>  { 
       App.update();      
       //document.querySelector(`[data-id="${id}"]`).closest('div.transaction').remove();
       });
@@ -81,12 +81,12 @@ class TransactionsPage {
    * в TransactionsPage.renderTransactions()
    * */
   render(options){
-    if (options) {
+    if (options) {       
       this.clear();
-      this.lastOptions = options;
-      Account.get(options.account_id, (response) =>  {
-        this.renderTitle(response.data.name);       
-        Transaction.list(this.lastOptions.account_id, (err, response) => {
+      this.lastOptions = options;            
+      Account.get(options.account_id, (response) =>  {        
+        this.renderTitle(response.data.name);               
+        Transaction.list(this.lastOptions, (err, response) => {          
           this.renderTransactions(response.data);
         });    
       });

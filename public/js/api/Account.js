@@ -9,12 +9,12 @@ class Account extends Entity {
   /**
    * Получает информацию о счёте
    * */
-  static get(id = '', callback){    
+  static get(data = '', callback){       
     createRequest({      
       url: '/account',
       method: 'GET',
       responseType: 'json',
-      id},
+      data},
        (response) => {               
         if (response.success && response.data) {      
           callback(response);                  

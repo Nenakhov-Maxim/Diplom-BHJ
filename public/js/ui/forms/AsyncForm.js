@@ -42,6 +42,7 @@ class AsyncForm {
    * }
    * */
   getData() {    
+    
     let email = this.element.querySelector('[name="email"]');
     let password = this.element.querySelector('[name="password"]');
     let name = this.element.querySelector('[name="name"]')      
@@ -69,13 +70,18 @@ class AsyncForm {
      }
        this.data = data;
     }
-    if (this.element.id === 'new-income-form' || this.element.id === 'new-expense-form') {
-      let data = User.current();
+    if (this.element.id === 'new-income-form' || this.element.id === 'new-expense-form') {      
+      let data;
+      if (User.current() === null) {
+        data = [];
+      } else {
+         data = User.current();
+      }      
       const formData = new FormData(this.element),
       entries = formData.entries();      
       for (let item of entries) {
         const key = item[ 0 ],
-          value = item[ 1 ];
+          value = item[ 1 ];          
           data[`${key}`] = `${value}`;        
       } 
       this.data = data;

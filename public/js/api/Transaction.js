@@ -6,12 +6,12 @@
 class Transaction extends Entity {
  static URL = '/transaction';
 
- static deleteTransaction(id, callback) {
+ static deleteTransaction(data, callback) {
   createRequest({
     url: this.URL,
     method: 'DELETE',
     responseType: 'json',
-    id},
+    data},
     (response) => { 
       if(response.error){
         throw new Error(response.error);
