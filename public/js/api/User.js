@@ -16,8 +16,8 @@ class User {
    * Удаляет информацию об авторизованном
    * пользователе из локального хранилища.
    * */
-  static unsetCurrent() {
-    localStorage.clear();
+  static unsetCurrent() {    
+    localStorage.removeItem('user');
   }
 
   /**
