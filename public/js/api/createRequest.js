@@ -6,25 +6,28 @@ const createRequest = (options = {}, callback) => {
   if (options.method === "GET" && options.url !== '/user/current' ) {    
     const xhr = new XMLHttpRequest;
     let newXhrString = '';
-    if (typeof options.data === 'string')  {
-      xhr.open(`${options.method}`, 
-    `${options.url}/${options.data}`);
-    } else {
-      for (let key in options.data) {
-      if(options.data.hasOwnProperty(key)){       
-        newXhrString = newXhrString.concat(`${key}=${options.data[key]}&`);        
+    try {
+      if (typeof options.data === 'string')  {
+      xhr.open(`${options.method}`, `${options.url}/${options.data}`);
+      } else {
+        for (let key in options.data) {
+          if(options.data.hasOwnProperty(key)){       
+           newXhrString = newXhrString.concat(`${key}=${options.data[key]}&`);        
+          }
+        }           
+        xhr.open(`${options.method}`, `${options.url}?${newXhrString.slice(0, newXhrString.length-1)}`);
+      };
+      xhr.responseType = options.responseType;    
+      xhr.send();
+      xhr.onreadystatechange = function() {
+        if(xhr.readyState===4){                                                           
+          callback(xhr.response);
+        }          
       }
-    }         
-    xhr.open(`${options.method}`, 
-    `${options.url}?${newXhrString.slice(0, newXhrString.length-1)}`);
-    };     
-    xhr.responseType = options.responseType;    
-    xhr.send();    
-    xhr.onreadystatechange = function() {
-      if(xhr.readyState===4){                                                           
-        callback(xhr.response);
-        }
-    }
+    } 
+    catch (error) {
+      callback(error);      
+    }   
   } else {
     const xhr = new XMLHttpRequest,
     formData = new FormData; 
@@ -36,7 +39,7 @@ const createRequest = (options = {}, callback) => {
         formData.append(`${key}`, `${options.data[key]}`);     
       }
     }
-  }         
+  } try {
     xhr.open(`${options.method}`, `${options.url}` );
     xhr.responseType = options.responseType;
     xhr.send(formData);
@@ -44,7 +47,11 @@ const createRequest = (options = {}, callback) => {
       if(xhr.readyState===4){                   
         callback(xhr.response);      
       }
-    }    
+    }
+  } catch (error) {
+      callback(error);
+  }        
+        
   }   
   //Запрос авторизованного пользователя. Исправить!
   if (options.method === "GET" && options.url === '/user/current') {       
