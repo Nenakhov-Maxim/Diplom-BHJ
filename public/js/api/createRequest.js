@@ -21,13 +21,13 @@ const createRequest = (options = {}, callback) => {
     xhr.responseType = options.responseType;    
     xhr.send();    
     xhr.onreadystatechange = function() {
-      if(xhr.readyState===4){                                               
+      if(xhr.readyState===4){                                                           
         callback(xhr.response);
         }
     }
   } else {
     const xhr = new XMLHttpRequest,
-    formData = new FormData;  
+    formData = new FormData; 
     if (typeof options.data === 'string')  {
       formData.append(`id`, `${options.data}`);
     } else {
@@ -41,7 +41,7 @@ const createRequest = (options = {}, callback) => {
     xhr.responseType = options.responseType;
     xhr.send(formData);
     xhr.onreadystatechange =  function() {
-      if(xhr.readyState===4){                
+      if(xhr.readyState===4){                   
         callback(xhr.response);      
       }
     }    

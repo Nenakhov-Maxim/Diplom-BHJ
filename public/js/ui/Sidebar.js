@@ -44,7 +44,7 @@ class Sidebar {
       new Modal( App.getModal('register').element).open();
     });
     logout[0].querySelector('a').addEventListener('click', ()=>  {      
-      User.logout(localStorage.getItem('user'), () => {
+      User.logout(User.current(), () => {
         App.setState('init');
         App.update();
         App.updateForms();        

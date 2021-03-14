@@ -55,7 +55,7 @@ class User {
       method: 'POST',
       responseType: 'json',
       data},
-       (err, response) => {        
+       (response) => {        
         if (response.success && response.user) {         
           this.setCurrent(response.user);
           callback();                  
@@ -78,7 +78,7 @@ class User {
       method: 'POST',
       responseType: 'json',
       data},
-       (err, response) => {  
+       (response) => {  
           if (response.success && response.user) {         
           this.setCurrent(response.user);
           callback();                  
@@ -92,14 +92,14 @@ class User {
    * Производит выход из приложения. После успешного
    * выхода необходимо вызвать метод User.unsetCurrent
    * */
-  static logout( data, callback) {     
+  static logout(data, callback) {        
     this.URL = "/user";
     createRequest({
       url: this.URL + '/logout',
       method: 'POST',
       responseType: 'json',
-      data},
-      (err, response) => {
+      data:data.id},
+      (response) => {
         if (response && response.success) {          
           this.unsetCurrent();                  
           callback();
