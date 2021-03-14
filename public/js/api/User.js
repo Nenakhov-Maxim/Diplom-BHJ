@@ -8,14 +8,8 @@ class User {
    * Устанавливает текущего пользователя в
    * локальном хранилище.
    * */
-  static setCurrent(user) {
-    let userNow = {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      password: user.password
-    }        
-    localStorage.setItem('user', JSON.stringify(userNow));   
+  static setCurrent(user) {          
+    localStorage.setItem('user', JSON.stringify(user));   
   }
 
   /**
@@ -56,11 +50,12 @@ class User {
       responseType: 'json',
       data},
        (response) => {        
-        if (response.success && response.user) {         
+        if (response.success && response.user) {
+          delete response.user.password;         
           this.setCurrent(response.user);
           callback();                  
         } else  {
-          throw new Error(err);                 
+          throw new Error(response.error);                 
         }                  
     });        
   }
